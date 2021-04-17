@@ -9,6 +9,10 @@ import ppmd
 import io
 import hunspell
 import re
+from datetime import datetime
+
+startTime = datetime.now()
+
 
 out = open(req.out,"w+")
 #Select languages
