@@ -21,7 +21,7 @@ hobj.add_dic('/usr/share/hunspell/fr.dic')
 hobj.add_dic('/usr/share/hunspell/de.dic')
 hobj.add_dic('/usr/share/hunspell/la.dic')
 #Select radius for clusters
-radius = 2.0
+radius = req.radius
 used = []
 #Path to files
 f1 = open(req.path).readlines()
