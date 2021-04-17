@@ -22,7 +22,6 @@ hobj.add_dic('/usr/share/hunspell/de.dic')
 hobj.add_dic('/usr/share/hunspell/la.dic')
 #Select radius for clusters
 radius = req.radius
-used = []
 #Path to files
 f1 = open(req.path).readlines()
 
@@ -75,13 +74,13 @@ def check(clust, ind, inds):
 
 #Go through all strings to find clusters
 val = 0
+used = []
 for s1 in f1:
 	cluster = [s1]
 	inds = [val]
-	val = val + 1
 	if val in used:
 		continue
-	for i in range(val, len(f1)):
+	for i in range(val+1, len(f1)):
 		s2 = f1[i]
 		if(abs(len(s1)-len(s2)) < 5):
 			d = 10.0 * (dist(s1,s2) - 1.0)
@@ -89,6 +88,7 @@ for s1 in f1:
 				cluster.append(s2)
 				inds.append(f1.index(s2))
 	#print(cluster)
+	val = val + 1
 	check(cluster, val, inds)
 	for v in inds:
 		used.append(v)
